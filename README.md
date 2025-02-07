@@ -11,6 +11,9 @@
 - Create an Outlet in Body Component
 - Create a Footer
 - Create a Login
+- Install axios
+- CORS - install cors in the backend => add middleware to with configuration : origin, credentials : true
+- Whenever you are making API call so pass axios => {withCredentials : true}
 
 Body
 NavBar
