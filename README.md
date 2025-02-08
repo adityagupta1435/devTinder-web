@@ -14,6 +14,8 @@
 - Install axios
 - CORS - install cors in the backend => add middleware to with configuration : origin, credentials : true
 - Whenever you are making API call so pass axios => {withCredentials : true}
+- Install Redux Toolkit and react-redux - https://redux-toolkit.js.org/tutorials/quick-start
+- configureStore => provider => createSlice => add reducer to appstore
 
 Body
 NavBar
