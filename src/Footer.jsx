@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer
-      data-theme="abyss"
+      data-theme="valentine"
       className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4 b-0 fixed"
     >
       <aside className="grid-flow-col items-center">

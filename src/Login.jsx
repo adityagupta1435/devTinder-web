@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { addUser } from "./utils/userSlice";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("rahul@gmail.com");
@@ -27,7 +28,7 @@ const Login = () => {
 
   return (
     <div
-      data-theme="abyss"
+      data-theme="valentine"
       className="hero bg-base-200 min-h-screen"
       style={{ minHeight: "82vh" }}
     >
@@ -35,8 +36,7 @@ const Login = () => {
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
           <p className="py-6">
-            Connect with World's best Developers and Build Enjoy the Social
-            Learning!!
+            Connect with World's best Developers and Enjoy the Social Learning!!
           </p>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
