@@ -1,29 +1,36 @@
 import { useState } from "react";
 import axios from "axios";
-import { addUser } from "./utils/userSlice";
+import { addUser } from "../utils/userSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
   const [emailId, setEmailId] = useState("rahul@gmail.com");
   const [password, setPassword] = useState("Rahul@123");
+  const [showPassword, setShowPassword] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/login",
+        BASE_URL + "/login",
         {
           emailId,
           password,
         },
         { withCredentials: true }
       );
-
+      navigate("/");
       dispatch(addUser(res.data));
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -58,14 +65,22 @@ const Login = () => {
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
               />
-              <label className="fieldset-label">Password</label>
-              <input
-                type="password"
-                className="input"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="relative">
+                <label className="fieldset-label">Password</label>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="input"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <div
+                  className="absolute top-[30px] left-[287px] cursor-pointer"
+                  onClick={handleShowPassword}
+                >
+                  👁
+                </div>
+              </div>
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>

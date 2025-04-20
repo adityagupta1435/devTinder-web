@@ -1,6 +1,7 @@
 import React from "react";
 
 const Profile = () => {
+  console.log("Reached at Profile");
   return (
     <div
       data-theme="abyss"

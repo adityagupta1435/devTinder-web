@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
-  console.log(user);
+  // console.log(user);
 
   return (
     <div data-theme="valentine" className="navbar bg-base-300 shadow-sm">
@@ -12,9 +12,7 @@ const NavBar = () => {
       </div>
       {user && (
         <div className="flex gap-2">
-          <p className="font-semibold" style={{ paddingTop: "6px" }}>
-            Welcome, {user.firstName}
-          </p>
+          <p className="font-semibold pt-1.5">Welcome, {user.firstName}</p>
           <div className="dropdown dropdown-end mx-5">
             <div
               tabIndex={0}
@@ -27,7 +25,7 @@ const NavBar = () => {
             </div>
             <ul
               tabIndex={0}
-              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
                 <a className="justify-between">
