@@ -9,6 +9,7 @@ const Login = () => {
   const [emailId, setEmailId] = useState("rahul@gmail.com");
   const [password, setPassword] = useState("Rahul@123");
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,7 +26,12 @@ const Login = () => {
       navigate("/");
       dispatch(addUser(res.data));
     } catch (err) {
-      console.error(err);
+      if (err.response?.status === 400) {
+        setErrorMessage(err?.response?.data || "Something went wrong!");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 2000);
+      }
     }
   };
 
@@ -84,6 +90,11 @@ const Login = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
+              {errorMessage && (
+                <div role="alert" className="alert alert-error rounded-3xl">
+                  <span>{errorMessage}</span>
+                </div>
+              )}
               <button className="btn btn-neutral mt-4" onClick={handleLogin}>
                 Login
               </button>
