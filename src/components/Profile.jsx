@@ -7,7 +7,9 @@ const Profile = () => {
       data-theme="abyss"
       className="hero bg-base-200 min-h-screen"
       style={{ minHeight: "82vh" }}
-    ></div>
+    >
+      Profile
+    </div>
   );
 };
 
