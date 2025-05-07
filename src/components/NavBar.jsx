@@ -3,6 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
+import { removeFeed } from "../utils/feedSlice";
 import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
@@ -20,6 +21,7 @@ const NavBar = () => {
         }
       );
       dispatch(removeUser());
+      dispatch(removeFeed());
       navigate("/login");
     } catch (err) {
       // Error Logic -> Redirect to error Page

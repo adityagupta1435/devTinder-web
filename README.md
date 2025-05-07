@@ -22,6 +22,12 @@
 - Refactor our code to add constant file + create a component folder
 - You should not be access other routed without login
 - If token is not present redirect to login page
+- Logout Feature
+- Input Validation
+- Get the feed and add the feed on Store
+- Build the user card on feed
+- Edit Profile Feature
+- Show Toast message on saved profiles
 
 Body
 NavBar

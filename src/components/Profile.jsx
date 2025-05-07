@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import EditProfile from "./EditProfile";
 
 const Profile = () => {
-  console.log("Reached at Profile");
-  return (
-    <div
-      data-theme="abyss"
-      className="hero bg-base-200 min-h-screen"
-      style={{ minHeight: "82vh" }}
-    >
-      Profile
-    </div>
-  );
+  const user = useSelector((store) => store.user);
+  return user && <EditProfile user={user}></EditProfile>;
 };
 
 export default Profile;

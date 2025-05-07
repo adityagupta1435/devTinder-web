@@ -40,11 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      data-theme="valentine"
-      className="hero bg-base-200 min-h-screen"
-      style={{ minHeight: "82vh" }}
-    >
+    <div data-theme="valentine" className="hero bg-base-200 min-h-[82vh]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>
@@ -61,7 +57,7 @@ const Login = () => {
               👩‍💻 DevTinder
             </h1>
           </div>
-          <div className="card-body mt--4">
+          <div className="card-body mt-4">
             <fieldset className="fieldset">
               <label className="fieldset-label">Email</label>
               <input
