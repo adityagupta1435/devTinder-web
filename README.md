@@ -28,6 +28,7 @@
 - Build the user card on feed
 - Edit Profile Feature
 - Show Toast message on saved profiles
+- New Page - See all connections
 
 Body
 NavBar

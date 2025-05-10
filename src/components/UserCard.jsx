@@ -3,10 +3,7 @@ import React from "react";
 const UserCard = ({ user, preview }) => {
   const { firstName, lastName, age, gender, about, photoUrl } = user;
   return (
-    <div
-      data-theme="valentine"
-      className="card bg-base-300 w-96 shadow-2xl max-h-[500px]"
-    >
+    <div className="card bg-base-300 w-96 shadow-2xl max-h-[500px]">
       <figure>
         <img src={photoUrl} alt="photo" />
       </figure>

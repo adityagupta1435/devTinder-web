@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("rahul@gmail.com");
-  const [password, setPassword] = useState("Rahul@123");
+  const [emailId, setEmailId] = useState("dhoni@gmail.com");
+  const [password, setPassword] = useState("Dhoni@123");
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -40,7 +40,7 @@ const Login = () => {
   };
 
   return (
-    <div data-theme="valentine" className="hero bg-base-200 min-h-[82vh]">
+    <div className="hero bg-base-200 min-h-[82vh]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Login now!</h1>

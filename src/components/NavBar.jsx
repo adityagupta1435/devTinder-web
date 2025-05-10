@@ -5,6 +5,7 @@ import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
 import { removeFeed } from "../utils/feedSlice";
 import { Link, useNavigate } from "react-router-dom";
+import { removeConnections } from "../utils/connectionSlice";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
@@ -22,6 +23,7 @@ const NavBar = () => {
       );
       dispatch(removeUser());
       dispatch(removeFeed());
+      dispatch(removeConnections());
       navigate("/login");
     } catch (err) {
       // Error Logic -> Redirect to error Page
@@ -60,7 +62,9 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/connections" className="justify-between">
+                  Connections
+                </Link>
               </li>
               <li>
                 <a onClick={handleLogOut}>Logout</a>
