@@ -29,6 +29,8 @@
 - Edit Profile Feature
 - Show Toast message on saved profiles
 - New Page - See all connections
+- New Page - See all the Connection Request
+- Accept and Reject the connection Request
 
 Body
 NavBar
