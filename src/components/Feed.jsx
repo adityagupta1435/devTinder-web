@@ -26,6 +26,16 @@ const Feed = () => {
     getFeed();
   }, []);
 
+  if (!feed) return;
+
+  if (feed.length === 0) {
+    return (
+      <div className="flex justify-center my-10">
+        <h1 className="text-3xl font-bold">No User Left!!!</h1>
+      </div>
+    );
+  }
+
   return (
     feed && (
       <div className="flex justify-center my-10">

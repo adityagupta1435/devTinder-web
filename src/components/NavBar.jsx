@@ -3,7 +3,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
-import { removeFeed } from "../utils/feedSlice";
+import { removeAllFeed } from "../utils/feedSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { removeConnections } from "../utils/connectionSlice";
 
@@ -22,7 +22,7 @@ const NavBar = () => {
         }
       );
       dispatch(removeUser());
-      dispatch(removeFeed());
+      dispatch(removeAllFeed());
       dispatch(removeConnections());
       navigate("/login");
     } catch (err) {

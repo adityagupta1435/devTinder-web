@@ -31,6 +31,16 @@
 - New Page - See all connections
 - New Page - See all the Connection Request
 - Accept and Reject the connection Request
+- Send/Ignore the user card from the feed
+
+# Remaining Item
+
+- Signup New User
+- E2E Testing
+
+# Problems in the Application
+
+- Whenever I am accepting the request then It should automatically add that particular user in the Connection List without any reloading
 
 Body
 NavBar

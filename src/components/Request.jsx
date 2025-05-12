@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { BASE_URL } from "../utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequest } from "../utils/requestSlice";
+import { addSingleConnection } from "../utils/connectionSlice";
 
 const Request = () => {
   useEffect(() => {
@@ -30,7 +31,9 @@ const Request = () => {
         { withCredentials: true }
       );
       dispatch(removeRequest(id));
-      console.log(res);
+      if (status === "accepted") {
+        // Add Single Connection to User
+      }
     } catch (err) {
       console.error(err);
     }

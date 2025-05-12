@@ -5,30 +5,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
 
 const Connections = () => {
-  useEffect(() => {
-    fetchConnection();
-  }, []);
-
   const dispatch = useDispatch();
   const userConnections = useSelector((store) => store.connections);
 
+  useEffect(() => {
+    fetchConnection();
+  }, [dispatch, userConnections]);
+
   const fetchConnection = async () => {
-    if (userConnections) return;
+    if (userConnections && userConnections.length > 0) {
+      return;
+    }
 
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
         withCredentials: true,
       });
-
-      dispatch(addConnections(res?.data?.data));
+      const data = res?.data?.data || [];
+      dispatch(addConnections(data));
     } catch (err) {
       console.error(err);
     }
   };
 
-  if (!userConnections) return;
-
-  if (userConnections.length === 0) {
+  if (!userConnections || userConnections.length === 0) {
     return (
       <div className="flex justify-center my-10">
         <h1 className="text-3xl font-bold">No Connection Found!!</h1>
