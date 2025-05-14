@@ -34,9 +34,9 @@ const Body = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div data-theme="valentine" className="flex flex-col min-h-screen">
       <NavBar />
-      <main data-theme="valentine" className="flex-1">
+      <main className="flex-1">
         <Outlet />
       </main>
       <Footer />

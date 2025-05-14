@@ -10,7 +10,7 @@ const EditProfile = ({ user }) => {
   const [firstName, setFirstname] = useState(user?.firstName);
   const [lastName, setLastName] = useState(user?.lastName);
   const [photoUrl, setPhotoUrl] = useState(user?.photoUrl);
-  const [gender, setGender] = useState(user?.gender);
+  const [gender, setGender] = useState(user?.gender || "");
   const [about, setAbout] = useState(user?.about);
   const [errorMessage, setErrorMessage] = useState("");
   const [preview, setPreview] = useState(false);
@@ -57,7 +57,7 @@ const EditProfile = ({ user }) => {
   const openModal = () => setPreview(true);
   const closeModal = () => setPreview(false);
   return (
-    <div data-theme="valentine" className="hero bg-base-200 min-h-[82vh]">
+    <div className="hero bg-base-200 min-h-[82vh]">
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl px-4 overflow-y-auto max-h-[calc(100vh-6rem)]">
         <div className="font-bold text-center text-3xl pb-0 my-4">
           Edit Profile
@@ -82,7 +82,7 @@ const EditProfile = ({ user }) => {
             />
             <label className="fieldset-label">Select Gender</label>
             <select
-              value={gender.toUpperCase()}
+              value={gender}
               onChange={(e) => setGender(e.target.value)}
               className="select"
             >
@@ -90,7 +90,7 @@ const EditProfile = ({ user }) => {
                 Select Gender
               </option>
               {GENDER.map((gend) => (
-                <option key={gend} value={gend.toLocaleLowerCase()}>
+                <option key={gend} value={gend.toLowerCase()}>
                   {gend.toUpperCase()}
                 </option>
               ))}

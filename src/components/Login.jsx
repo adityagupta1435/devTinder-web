@@ -6,8 +6,11 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("dhoni@gmail.com");
-  const [password, setPassword] = useState("Dhoni@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("S");
+  const [firstName, setFirstname] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [isLoginForm, setIsLoginForm] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -35,6 +38,32 @@ const Login = () => {
     }
   };
 
+  const handleSignUp = async () => {
+    try {
+      const res = await axios.post(
+        BASE_URL + "/signup",
+        {
+          firstName,
+          lastName,
+          emailId,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      setEmailId("");
+      setPassword("");
+      setIsLoginForm(true);
+    } catch (err) {
+      if (err.response?.status === 400) {
+        setErrorMessage(err?.response?.data || "Something went wrong!");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 2000);
+      }
+    }
+  };
+
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
@@ -43,7 +72,9 @@ const Login = () => {
     <div className="hero bg-base-200 min-h-[82vh]">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold">
+            {isLoginForm ? "Login now!" : "SignUp now!"}
+          </h1>
           <p className="py-6">
             Connect with World's best Developers and Enjoy the Social Learning!!
           </p>
@@ -59,6 +90,27 @@ const Login = () => {
           </div>
           <div className="card-body mt-4">
             <fieldset className="fieldset">
+              {!isLoginForm && (
+                <>
+                  <label className="fieldset-label">First Name</label>
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstname(e.target.value)}
+                  />
+                  <label className="fieldset-label">Last Name</label>
+                  <input
+                    type="text"
+                    className="input"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </>
+              )}
+
               <label className="fieldset-label">Email</label>
               <input
                 type="email"
@@ -83,17 +135,26 @@ const Login = () => {
                   👁
                 </div>
               </div>
-              <div>
-                <a className="link link-hover">Forgot password?</a>
-              </div>
+
               {errorMessage && (
                 <div role="alert" className="alert alert-error rounded-3xl">
                   <span>{errorMessage}</span>
                 </div>
               )}
-              <button className="btn btn-neutral mt-4" onClick={handleLogin}>
-                Login
+              <button
+                className="btn btn-neutral mt-4"
+                onClick={isLoginForm ? handleLogin : handleSignUp}
+              >
+                {isLoginForm ? "Login" : "SignUp"}
               </button>
+              <p
+                className="cursor-pointer underline"
+                onClick={() => setIsLoginForm((prev) => !prev)}
+              >
+                {isLoginForm
+                  ? "New User? SignUp Here"
+                  : "Existing User? Login here"}
+              </p>
             </fieldset>
           </div>
         </div>
